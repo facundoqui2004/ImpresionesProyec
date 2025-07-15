@@ -71,7 +71,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   await syncSchema()
 
   const PORT = process.env.PORT || 3002
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}/`)
+  console.log(`🚀 Starting server on port ${PORT}...`)
+  console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`)
+  
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`✅ Server running on http://0.0.0.0:${PORT}/`)
+    console.log(`🌐 Health check: http://0.0.0.0:${PORT}/health`)
   })
 }
