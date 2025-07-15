@@ -10,6 +10,9 @@
   "scripts": {
     "start": "node dist/app.js",
     "build": "tsc",
+    "build:clean": "rm -rf dist && npm run build",
+    "install:clean": "rm -rf node_modules package-lock.json && npm install --legacy-peer-deps",
+    "railway:build": "npm install --legacy-peer-deps && npm run build",
     "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/app.js\"",
     "start:dev": "npm run dev"
   },
