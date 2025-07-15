@@ -1,0 +1,150 @@
+### LÍNEAS DE PEDIDO API - Tests
+### Relación Muchos a Muchos entre Pedidos y Productos
+### Clave principal compuesta: (pedido_id, producto_id) + cantidad
+
+@baseUrl = http://localhost:3002/api
+@authUrl = http://localhost:3002/auth
+
+### 1. Login como Admin (requerido para operaciones CRUD)
+POST {{authUrl}}/login
+Content-Type: application/json
+
+{
+  "usuario": "admin",
+  "contraseña": "admin123"
+}
+
+### 2. Obtener todas las líneas de pedido
+GET {{baseUrl}}/lineas-pedido
+
+### 3. Obtener líneas de un pedido específico
+GET {{baseUrl}}/lineas-pedido/pedido/1
+
+### 4. Obtener una línea específica (pedido_id, producto_id)
+GET {{baseUrl}}/lineas-pedido/1/1
+
+### 5. Crear nueva línea de pedido
+POST {{baseUrl}}/lineas-pedido
+Content-Type: application/json
+
+{
+  "pedidoId": 1,
+  "productoId": 7,
+  "cantidad": 5
+}
+
+### 6. Crear otra línea de pedido
+POST {{baseUrl}}/lineas-pedido
+Content-Type: application/json
+
+{
+  "pedidoId": 1,
+  "productoId": 2,
+  "cantidad": 3
+}
+
+### 7. Actualizar cantidad en línea de pedido existente
+PUT {{baseUrl}}/lineas-pedido/1/1
+Content-Type: application/json
+
+{
+  "cantidad": 8
+}
+
+### 8. Actualizar con PATCH
+PATCH {{baseUrl}}/lineas-pedido/1/2
+Content-Type: application/json
+
+{
+  "cantidad": 6
+}
+
+### 9. Eliminar línea de pedido específica
+DELETE {{baseUrl}}/lineas-pedido/1/1
+
+### 10. Verificar que se eliminó
+GET {{baseUrl}}/lineas-pedido/1/1
+
+### ============================================
+### CASOS DE ERROR Y VALIDACIONES
+### ============================================
+
+### Error: Pedido no existe
+POST {{baseUrl}}/lineas-pedido
+Content-Type: application/json
+
+{
+  "pedidoId": 999,
+  "productoId": 1,
+  "cantidad": 2
+}
+
+### Error: Producto no existe
+POST {{baseUrl}}/lineas-pedido
+Content-Type: application/json
+
+{
+  "pedidoId": 1,
+  "productoId": 999,
+  "cantidad": 2
+}
+
+### Error: Línea duplicada (si ya existe)
+POST {{baseUrl}}/lineas-pedido
+Content-Type: application/json
+
+{
+  "pedidoId": 1,
+  "productoId": 1,
+  "cantidad": 3
+}
+
+### Error: Stock insuficiente
+POST {{baseUrl}}/lineas-pedido
+Content-Type: application/json
+
+{
+  "pedidoId": 1,
+  "productoId": 1,
+  "cantidad": 999999
+}
+
+### ============================================
+### DATOS NECESARIOS PARA TESTING
+### ============================================
+
+### Crear pedido de prueba
+POST {{baseUrl}}/pedidos
+Content-Type: application/json
+
+{
+  "estadoPedido": "pendiente",
+  "fechaPedido": "2024-01-15",
+  "formaPago": "efectivo",
+  "direccionEntrega": "Av. Test 123",
+  "clienteId": 1
+}
+
+### Crear producto de prueba
+POST {{baseUrl}}/productos
+Content-Type: application/json
+
+{
+  "nombre": "Producto Test 1",
+  "descripcion": "Producto para testing",
+  "cantidadStock": 100,
+  "precioVenta": 250.00,
+  "categoriaId": 1
+}
+
+### Crear otro producto de prueba
+POST {{baseUrl}}/productos
+Content-Type: application/json
+
+{
+  "nombre": "Producto Test 2", 
+  "descripcion": "Segundo producto para testing",
+  "cantidadStock": 50,
+  "precioVenta": 180.00,
+  "categoriaId": 1
+}

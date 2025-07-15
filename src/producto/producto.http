@@ -1,0 +1,58 @@
+@baseUrl = http://localhost:3002/api/productos
+
+### Obtener todos los productos
+GET {{baseUrl}}/
+
+### Obtener un producto por ID
+GET {{baseUrl}}/1
+
+### Buscar productos por nombre
+GET {{baseUrl}}/search?nombre=samsung
+
+### Obtener productos por categoría
+GET {{baseUrl}}/categoria/1
+
+### Obtener productos con stock bajo
+GET {{baseUrl}}/stock-bajo?limite=5
+
+### Crear un nuevo producto
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+  "nombre": "Soporte Notebook",
+  "descripcion": "Soporte para cualquier tipo de nootebook",
+  "cantidadStock": 8,
+  "imagen": "notebook-lenovo.jpg",
+  "duracion": null,
+  "precioVenta": 15000,
+  "comprobante": null,
+  "categoria": 18
+}
+
+### Actualizar un producto (PUT - reemplaza todos los campos)
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "nombre": "Refrigerador Samsung 350L",
+  "descripcion": "Refrigerador con freezer, eficiencia energética A++, No Frost",
+  "cantidadStock": 7,
+  "imagen": "refrigerador-samsung-350.jpg",
+  "duracion": "24 meses garantía",
+  "precioVenta": 95000,
+  "comprobante": "Factura A",
+  "categoria": 1
+}
+
+### Actualizar parcialmente un producto (PATCH - solo campos específicos)
+PATCH {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "cantidadStock": 10,
+  "precioVenta": 87000
+}
+
+### Eliminar un producto
+DELETE {{baseUrl}}/1

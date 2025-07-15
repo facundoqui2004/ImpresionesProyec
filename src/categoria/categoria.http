@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:3002/api/categorias
+
+### Obtener todas las categorías
+GET {{baseUrl}}/
+
+### Obtener una categoría por ID
+GET {{baseUrl}}/1
+
+### Buscar categorías por nombre
+GET {{baseUrl}}/search?nombre=electro
+
+### Obtener estadísticas de categorías
+GET {{baseUrl}}/stats
+
+### Crear una nueva categoría
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+  "nombre": "Gadgests",
+  "descripcion": "Productos que solucionan o organizan",
+  "cantidad": 0,
+  "total": 0,
+  "imagen": "Gadgest.jpg"
+}
+
+### Actualizar una categoría (PUT - reemplaza todos los campos)
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "nombre": "Electrodomésticos Modernos",
+  "descripcion": "Aparatos eléctricos modernos para el hogar",
+  "cantidad": 10,
+  "total": 850000,
+  "imagen": "electrodomesticos_modernos.jpg"
+}
+
+### Actualizar parcialmente una categoría (PATCH - solo campos específicos)
+PATCH {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "descripcion": "Nueva descripción actualizada",
+  "cantidad": 15
+}
+
+### Eliminar una categoría
+DELETE {{baseUrl}}/1
+

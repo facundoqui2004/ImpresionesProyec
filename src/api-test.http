@@ -1,0 +1,72 @@
+# API Testing - CRUD Impresiones
+# Este archivo contiene ejemplos de todas las APIs disponibles
+
+@baseUrl = http://localhost:3002/api
+
+### ========== AUTENTICACIÓN Y USUARIOS ==========
+
+### Registrar nuevo usuario
+POST {{baseUrl}}/usuarios/register
+Content-Type: application/json
+
+{
+  "usuario": "test_user",
+  "email": "test@ejemplo.com",
+  "contraseña": "password123",
+  "rol": "cliente"
+}
+
+### Login
+POST {{baseUrl}}/usuarios/login
+Content-Type: application/json
+
+{
+  "usuario": "admin",
+  "contraseña": "admin123"
+}
+
+### Perfil actual
+GET {{baseUrl}}/usuarios/me
+
+### ========== CATEGORÍAS ==========
+
+### Obtener todas las categorías
+GET {{baseUrl}}/categorias/
+
+### Estadísticas de categorías
+GET {{baseUrl}}/categorias/stats
+
+### Buscar categorías
+GET {{baseUrl}}/categorias/search?nombre=electro
+
+### ========== PRODUCTOS ==========
+
+### Obtener todos los productos
+GET {{baseUrl}}/productos/
+
+### Productos por categoría
+GET {{baseUrl}}/productos/categoria/1
+
+### ========== CLIENTES ==========
+
+### Obtener todos los clientes
+GET {{baseUrl}}/clientes/
+
+### ========== PEDIDOS ==========
+
+### Obtener todos los pedidos
+GET {{baseUrl}}/pedidos/
+
+### Pedidos por cliente
+GET {{baseUrl}}/pedidos/cliente/1
+
+### ========== PROVINCIAS Y LOCALIDADES ==========
+
+### Obtener todas las provincias
+GET {{baseUrl}}/provincias/
+
+### Obtener todas las localidades
+GET {{baseUrl}}/localidades/
+
+### Localidades por provincia
+GET {{baseUrl}}/localidades/provincia/BA

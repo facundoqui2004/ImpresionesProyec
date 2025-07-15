@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:3002/api/clientes
+
+### Obtener todos los clientes
+GET {{baseUrl}}/
+
+### Obtener un cliente por ID
+GET {{baseUrl}}/1
+
+### Crear un nuevo cliente
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+  "nombre": "María",
+  "apellido": "González",
+  "dni": "87654321",
+  "tipoDni": "DNI",
+  "usuario": 2
+}
+
+### Actualizar un cliente (PUT - reemplaza todos los campos)
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "nombre": "María Elena",
+  "apellido": "González Pérez",
+  "dni": "87654321",
+  "tipoDni": "DNI",
+  "usuario": 2
+}
+
+### Actualizar parcialmente un cliente (PATCH - solo campos específicos)
+PATCH {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "nombre": "María Carmen",
+  "tipoDni": "PASAPORTE"
+}
+
+### Eliminar un cliente
+DELETE {{baseUrl}}/1
