@@ -1,0 +1,43 @@
+### 🔍 VERIFICAR DEPLOYMENT Y TABLAS EN RAILWAY
+
+### 1. Health Check - Verificar que la app esté funcionando
+GET https://impresionesproyec-backend.up.railway.app/health
+Accept: application/json
+
+###
+
+### 2. Test de conexión a base de datos - Productos
+GET https://impresionesproyec-backend.up.railway.app/api/productos
+Accept: application/json
+
+###
+
+### 3. Test de conexión a base de datos - Categorías
+GET https://impresionesproyec-backend.up.railway.app/api/categorias
+Accept: application/json
+
+###
+
+### 4. Test de conexión a base de datos - Clientes
+GET https://impresionesproyec-backend.up.railway.app/api/clientes
+Accept: application/json
+
+###
+
+### 5. Test de conexión a base de datos - Pedidos
+GET https://impresionesproyec-backend.up.railway.app/api/pedidos
+Accept: application/json
+
+###
+
+### 6. Test de conexión a base de datos - Líneas de Pedido
+GET https://impresionesproyec-backend.up.railway.app/api/lineas-pedido
+Accept: application/json
+
+###
+
+### 7. Verificar todas las rutas disponibles
+GET https://impresionesproyec-backend.up.railway.app/api
+Accept: application/json
+
+###

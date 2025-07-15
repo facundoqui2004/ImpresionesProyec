@@ -19,7 +19,7 @@ MYSQLPASSWORD=wCQJldwLLCNUcLRIofvofBXcWxvpUENl
 
 ```env
 NODE_ENV=production
-JWT_SECRET=tu_clave_secreta_minimo_32_caracteres_para_jwt_tokens
+JWT_SECRET=9296a0bdd8bba1353a022e7ac1f8352bd00c90abe5897aa1d00473a11a922c45
 ```
 
 ## 📋 **Pasos para configurar en Railway:**
