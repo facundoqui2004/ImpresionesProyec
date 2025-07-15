@@ -8,16 +8,16 @@ dotenv.config()
 export const orm = await MikroORM.init({
   entities: ['dist/**/*.entity.js'],
   entitiesTs: ['src/**/*.entity.ts'],
-  dbName: process.env.DB_NAME || 'impresionesquinio',
-  password: process.env.DB_PASSWORD || 'facu',
-  user: process.env.DB_USER || 'facu',
-  host: process.env.DB_HOST || 'localhost',
-  port: Number(process.env.DB_PORT) || 3309,
+  // Configuración para Railway MySQL
+  dbName: process.env.MYSQL_DATABASE || process.env.DB_NAME || 'railway',
+  password: process.env.MYSQL_ROOT_PASSWORD || process.env.MYSQLPASSWORD || process.env.DB_PASSWORD || 'facu',
+  user: process.env.MYSQL_USER || process.env.MYSQLUSER || process.env.DB_USER || 'root',
+  host: process.env.MYSQL_HOST || process.env.MYSQLHOST || process.env.DB_HOST || 'localhost',
+  port: Number(process.env.MYSQL_PORT || process.env.MYSQLPORT || process.env.DB_PORT) || 3306,
   type: 'mysql',
   highlighter: new SqlHighlighter(),
-  debug: true,
+  debug: process.env.NODE_ENV !== 'production',
   schemaGenerator: {
-    // nunca en producción
     disableForeignKeys: true,
     createForeignKeyConstraints: true,
     ignoreSchema: [],

@@ -41,12 +41,29 @@ git push origin railway-deploy
 4. Elegir rama `railway-deploy`
 
 #### 3. **Configurar Variables de Entorno**
+
+**Railway MySQL (Recomendado - Auto-configurado):**
+```env
+# Estas variables se generan automáticamente al agregar MySQL service
+MYSQL_DATABASE=railway
+MYSQL_ROOT_PASSWORD=wCQJldwLLCNUcLRIofvofBXcWxvpUENl
+MYSQLUSER=root
+MYSQLHOST=mysql.railway.internal
+MYSQLPORT=3306
+MYSQLPASSWORD=wCQJldwLLCNUcLRIofvofBXcWxvpUENl
+
+# Variables adicionales requeridas
+NODE_ENV=production
+JWT_SECRET=tu_clave_secreta_minimo_32_caracteres_aqui
+```
+
+**Variables manuales (alternativa):**
 ```env
 DB_HOST=mysql.railway.internal
 DB_PORT=3306
 DB_NAME=railway
 DB_USER=root
-DB_PASSWORD=[auto-generado]
+DB_PASSWORD=wCQJldwLLCNUcLRIofvofBXcWxvpUENl
 JWT_SECRET=tu_clave_secreta_aqui
 NODE_ENV=production
 ```
