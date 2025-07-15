@@ -1,15 +1,19 @@
 {
-  "name": "05.01-express-simple-api",
+  "name": "cruds-impresion-api",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start:dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/app.js\"",
-    "build": "tsc",
-    "start": "node dist/app.js"
+  "description": "CRUD API para sistema de impresiones con TypeScript, Express y MySQL",
+  "main": "dist/app.js",
+  "engines": {
+    "node": ">=18.0.0"
   },
-  "keywords": [],
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsc",
+    "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/app.js\"",
+    "start:dev": "npm run dev"
+  },
+  "keywords": ["api", "crud", "typescript", "express", "mysql", "printing"],
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -36,6 +36,16 @@ app.use((req, res, next) => {
   RequestContext.create(orm.em, next)
 })
 
+// Health check endpoint para Railway
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    service: 'CRUDS Impresion API',
+    version: '1.0.0'
+  })
+})
+
 // Rutas de autenticación
 app.use('/api/usuarios', usuarioRoutes)
 
