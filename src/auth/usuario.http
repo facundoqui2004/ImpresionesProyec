@@ -1,0 +1,70 @@
+@baseUrl = http://localhost:3002/api/usuarios
+
+### Registrar nuevo usuario
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+  "usuario": "nuevo_usuario",
+  "email": "usuario@ejemplo.com",
+  "contraseña": "password123",
+  "rol": "cliente"
+}
+
+### Login de usuario
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "usuario": "admin",
+  "contraseña": "admin123"
+}
+
+### Login con email
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "usuario": "admin@empresa.com",
+  "contraseña": "admin123"
+}
+
+### Obtener información del usuario actual (requiere autenticación)
+GET {{baseUrl}}/
+
+##Todos
+GET {{baseUrl}}/
+### Obtener un usuario por ID
+### Logout
+POST {{baseUrl}}/logout
+
+### === ENDPOINTS DE ADMINISTRACIÓN (requieren autenticación) ===
+
+### Obtener todos los usuarios
+GET {{baseUrl}}/
+
+### Obtener un usuario por ID
+GET {{baseUrl}}/1
+
+### Actualizar un usuario (PUT - reemplaza todos los campos)
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "usuario": "admin_updated",
+  "email": "admin_nuevo@empresa.com",
+  "contraseña": "nuevapassword123",
+  "rol": "admin",
+  "estado": "activo"
+}
+
+### Actualizar parcialmente un usuario (PATCH - solo campos específicos)
+PATCH {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "estado": "inactivo"
+}
+
+### Eliminar un usuario
+DELETE {{baseUrl}}/1

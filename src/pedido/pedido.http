@@ -1,0 +1,51 @@
+@baseUrl = http://localhost:3002/api/pedidos
+
+### Obtener todos los pedidos
+GET {{baseUrl}}/
+
+### Obtener un pedido por ID
+GET {{baseUrl}}/1
+
+### Obtener pedidos por cliente
+GET {{baseUrl}}/cliente/1
+
+### Obtener pedidos por estado
+GET {{baseUrl}}/estado/pendiente
+
+### Obtener pedidos por fecha
+GET {{baseUrl}}/fecha?desde=2025-01-01&hasta=2025-12-31
+
+### Crear un nuevo pedido
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+  "estadoPedido": "pendiente",
+  "fechaPedido": "2025-07-15T10:30:00.000Z",
+  "formaPago": "tarjeta",
+  "direccionEntrega": "Av. Corrientes 1234, Buenos Aires",
+  "cliente": 2
+}
+
+### Actualizar un pedido (PUT - reemplaza todos los campos)
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "estadoPedido": "en_proceso",
+  "fechaPedido": "2025-07-15T10:30:00.000Z",
+  "formaPago": "efectivo",
+  "direccionEntrega": "Av. Corrientes 1234, Buenos Aires - Depto 5B",
+  "cliente": 1
+}
+
+### Actualizar parcialmente un pedido (PATCH - solo campos específicos)
+PATCH {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "estadoPedido": "entregado"
+}
+
+### Eliminar un pedido
+DELETE {{baseUrl}}/1

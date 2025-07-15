@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:3002/api/provincias
+
+### Obtener todas las provincias
+GET {{baseUrl}}/
+
+### Obtener una provincia por código
+GET {{baseUrl}}/BA
+
+### Crear una nueva provincia
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+  "codProv": "SF",
+  "nombreProv": "Santa Fe"
+}
+
+### Actualizar una provincia (PUT - reemplaza todos los campos)
+PUT {{baseUrl}}/SF
+Content-Type: application/json
+
+{
+  "codProv": "SF",
+  "nombreProv": "Santa Fe - Provincia"
+}
+
+### Actualizar parcialmente una provincia (PATCH - solo campos específicos)
+PATCH {{baseUrl}}/SF
+Content-Type: application/json
+
+{
+  "nombreProv": "Provincia de Santa Fe"
+}
+
+### Eliminar una provincia
+DELETE {{baseUrl}}/SF

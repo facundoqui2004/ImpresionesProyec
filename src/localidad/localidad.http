@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3002/api/localidades
+
+### Obtener todas las localidades
+GET {{baseUrl}}/
+
+### Obtener una localidad por código postal
+GET {{baseUrl}}/1000
+
+### Obtener localidades por provincia
+GET {{baseUrl}}/provincia/BA
+
+### Crear una nueva localidad
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+  "codPostal": "2000",
+  "ciudad": "Rosario",
+  "provincia": "SF"
+}
+
+### Actualizar una localidad (PUT - reemplaza todos los campos)
+PUT {{baseUrl}}/2000
+Content-Type: application/json
+
+{
+  "codPostal": "2000",
+  "ciudad": "Rosario Centro",
+  "provincia": "SF"
+}
+
+### Actualizar parcialmente una localidad (PATCH - solo campos específicos)
+PATCH {{baseUrl}}/2000
+Content-Type: application/json
+
+{
+  "ciudad": "Rosario Norte"
+}
+
+### Eliminar una localidad
+DELETE {{baseUrl}}/2000
